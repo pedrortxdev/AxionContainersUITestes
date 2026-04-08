@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axion | Control Plane</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.1.0/css/xterm.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.js"></script>
+    <style>
+        .xterm-viewport { background-color: transparent !important; }
+        body { scrollbar-width: none; }
+    </style>
+<link rel="modulepreload" href="/axion-frontend-5f7dd43b6dd8926.js" crossorigin="anonymous" integrity="sha384-EGA479y50ce+pO8qg4OkR9gxf3N8ZQACgtZ2dpJnvXploEMqXip2wyS57ev08OEB"><link rel="preload" href="/axion-frontend-5f7dd43b6dd8926_bg.wasm" crossorigin="anonymous" integrity="sha384-Ifyp/LjRd8HYhnMwZsYSkkeeJhhotIGA2/yR663HrDr0BLjY/eV7LEV+Y/kTqaZ7" as="fetch" type="application/wasm"></head>
+<body class="bg-slate-950 overflow-hidden">
+
+<script type="module">
+import init, * as bindings from '/axion-frontend-5f7dd43b6dd8926.js';
+const wasm = await init({ module_or_path: '/axion-frontend-5f7dd43b6dd8926_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
