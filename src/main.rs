@@ -6,7 +6,7 @@ use web_sys::{WebSocket, MessageEvent};
 use gloo_timers::callback::Interval;
 use std::rc::Rc;
 
-const BACKEND_IP: &str = "155.138.140.39";
+const BACKEND_IP: &str = "127.0.0.1";
 
 #[wasm_bindgen]
 extern "C" {
@@ -53,7 +53,9 @@ fn Dashboard() -> impl IntoView {
                 memory_mib: 2048,
             };
 
-            let url = format!("http://{}:3000/containers", BACKEND_IP);
+            let window = web_sys::window().unwrap();
+            let hostname = window.location().hostname().unwrap_or_else(|_| "127.0.0.1".into());
+            let url = format!("http://{}:3000/containers", hostname);
             logging::log!(">>> [UI] Enviando POST para {}", url);
 
             match Request::post(&url)
